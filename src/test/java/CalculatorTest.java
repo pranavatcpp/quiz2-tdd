@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
     Calculator calculator = new Calculator();
@@ -43,5 +44,23 @@ public class CalculatorTest {
         int actual = calculator.multiply(5, 0);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDivide() {
+        int expected = 4;
+        int actual = calculator.divide(9, 2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDivideByZero() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> calculator.divide(8, 0));
+        String expectedMessage = "Cannot divide by zero";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
     }
 }
