@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CalculatorTest {
     Calculator calculator = new Calculator();
@@ -62,5 +64,19 @@ public class CalculatorTest {
         String actualMessage = exception.getMessage();
 
         assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testIsEven() {
+        boolean actual = calculator.isEven(2);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void testIsOdd() {
+        boolean actual = calculator.isEven(3);
+
+        assertFalse(actual);
     }
 }
